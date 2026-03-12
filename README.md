@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jimmy Home 个人博客
 
-## Getting Started
+NBA 独行侠主题个人博客网站，用于记录生活和分享心得体会。
 
-First, run the development server:
+## 技术栈
+
+- **前端**: Next.js 16 + React + TypeScript
+- **样式**: Tailwind CSS v4 + shadcn/ui
+- **数据库**: SQLite (开发) / PostgreSQL (生产)
+- **ORM**: Prisma 7
+- **图片存储**: Vercel Blob Storage
+- **认证**: NextAuth.js
+- **部署**: Vercel
+
+## 独行侠主题色
+
+- 主色：海军蓝 `#002B5E`
+- 辅色：皇家蓝 `#0053BC`
+- 强调色：银灰色 `#B8C4CA`
+
+## 快速开始
+
+### 1. 克隆项目
+
+```bash
+git clone <repository-url>
+cd jimmy-home-blog
+```
+
+### 2. 安装依赖
+
+```bash
+npm install
+```
+
+### 3. 配置环境变量
+
+```bash
+cp .env.example .env
+```
+
+编辑 `.env` 文件，设置数据库连接字符串。
+
+### 4. 初始化数据库
+
+```bash
+npm run db:migrate
+```
+
+### 5. 创建管理员用户
+
+```bash
+npm run db:seed
+```
+
+### 6. 启动开发服务器
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 项目结构
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+jimmy-home-blog/
+├── src/
+│   ├── app/              # Next.js App Router 页面
+│   │   ├── admin/        # 管理后台
+│   │   ├── api/          # API 路由
+│   │   ├── blog/         # 博客文章
+│   │   └── nba/          # NBA 专区
+│   ├── components/       # React 组件
+│   └── lib/              # 工具函数
+├── prisma/
+│   └── schema.prisma     # 数据库模型
+├── scripts/
+│   └── create-admin.js   # 创建管理员脚本
+└── .env.example          # 环境变量示例
+```
 
-## Learn More
+## 功能特性
 
-To learn more about Next.js, take a look at the following resources:
+- ✅ 博客文章管理（创建/编辑/删除）
+- ✅ Markdown 编辑器
+- ✅ 图片上传（Vercel Blob）
+- ✅ 分类和标签
+- ✅ 深色模式切换
+- ✅ 响应式设计
+- ✅ NBA 专区
+- ✅ 管理员认证
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 部署
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Vercel 部署
 
-## Deploy on Vercel
+1. 安装 Vercel CLI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm i -g vercel
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. 登录 Vercel
+
+```bash
+vercel login
+```
+
+3. 部署
+
+```bash
+vercel
+```
+
+### 环境变量
+
+在 Vercel 项目中设置以下环境变量：
+
+- `DATABASE_URL` - PostgreSQL 连接字符串
+- `BLOB_READ_WRITE_TOKEN` - Vercel Blob 令牌
+- `NEXTAUTH_SECRET` - NextAuth 密钥（openssl rand -base64 32）
+- `NEXTAUTH_URL` - 你的网站 URL
+
+## 数据库模型
+
+- **User** - 管理员用户
+- **Post** - 博客文章
+- **Category** - 文章分类
+- **Tag** - 标签
+- **PostTag** - 文章 - 标签关联
+
+## 许可证
+
+MIT

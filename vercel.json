@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "buildCommand": "prisma generate && prisma migrate deploy && npm run build",
+  "devCommand": "prisma migrate dev && npm run dev",
+  "outputDirectory": ".next",
+  "env": {
+    "DATABASE_URL": {
+      "type": "encrypted",
+      "value": "file:./dev.db"
+    }
+  }
+}
