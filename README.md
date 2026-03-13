@@ -93,34 +93,79 @@ jimmy-home-blog/
 
 ## 部署
 
-### Vercel 部署
+### Vercel 部署（详细步骤）
 
-1. 安装 Vercel CLI
+#### 步骤 1：登录 Vercel
 
+访问 https://vercel.com 并使用 GitHub 账号登录
+
+#### 步骤 2：导入项目
+
+1. 访问 https://vercel.com/new
+2. 点击 **"Import Git Repository"**
+3. 在 "Git Repository" 标签下找到并选择 `melo7up/jimmy-home-blog`
+4. 点击 **"Import"**
+
+#### 步骤 3：配置项目
+
+1. **Project Name**: `jimmy-home-blog`
+2. **Framework Preset**: Next.js（自动检测）
+3. **Root Directory**: `./`（默认）
+4. **Build Command**: `prisma generate && prisma migrate deploy && npm run build`
+5. **Output Directory**: `.next`（默认）
+
+#### 步骤 4：添加 PostgreSQL 数据库
+
+1. 在部署页面点击 **"Add Database"**
+2. 选择 **"PostgreSQL"**
+3. 选择 **"Vercel Postgres"** 或 **"Neon Postgres"**（推荐 Neon，免费）
+   - 如果使用 Neon: 访问 https://neon.tech 创建免费数据库
+   - 复制连接字符串（Connection String）
+
+#### 步骤 5：配置环境变量
+
+在 Vercel 项目设置中添加以下环境变量：
+
+| 变量名 | 值 | 说明 |
+|--------|-----|------|
+| `DATABASE_URL` | `postgresql://...` | PostgreSQL 连接字符串 |
+| `NEXTAUTH_SECRET` | `随机生成的 32 位密钥` | NextAuth 密钥 |
+| `NEXTAUTH_URL` | `https://your-site.vercel.app` | 部署后的域名 |
+| `BLOB_READ_WRITE_TOKEN` | `vercel_blob_...` | Vercel Blob 令牌（可选，用于图片上传） |
+
+**生成 NEXTAUTH_SECRET:**
 ```bash
-npm i -g vercel
+openssl rand -base64 32
 ```
 
-2. 登录 Vercel
+#### 步骤 6：部署
 
+1. 点击 **"Deploy"**
+2. 等待部署完成（约 2-3 分钟）
+3. 访问分配的域名查看网站
+
+#### 步骤 7：创建管理员
+
+部署完成后，在 Vercel 项目页面：
+1. 点击 **"Storage"** 标签
+2. 点击数据库的 **"Browse"**
+3. 或者使用 Vercel CLI 运行：
 ```bash
-vercel login
+vercel run db:seed
 ```
 
-3. 部署
+### 本地开发
 
 ```bash
-vercel
+# 安装依赖
+npm install
+
+# 复制环境变量
+cp .env.example .env
+
+# 启动开发服务器
+npm run dev
 ```
-
-### 环境变量
-
-在 Vercel 项目中设置以下环境变量：
-
-- `DATABASE_URL` - PostgreSQL 连接字符串
-- `BLOB_READ_WRITE_TOKEN` - Vercel Blob 令牌
-- `NEXTAUTH_SECRET` - NextAuth 密钥（openssl rand -base64 32）
-- `NEXTAUTH_URL` - 你的网站 URL
 
 ## 数据库模型
 
