@@ -37,7 +37,12 @@ export default function ImageUpload({ onUpload, accept = "image/*", maxSize = 5 
         toast.success("上传成功");
       } else {
         const error = await res.json();
-        toast.error(error.error || "上传失败");
+        if (res.status === 501) {
+          // 未配置 Blob 存储
+          toast.error("图片上传功能暂未配置，可直接输入图片 URL");
+        } else {
+          toast.error(error.error || error.message || "上传失败");
+        }
       }
     } catch (error) {
       toast.error("上传失败，请稍后重试");
@@ -72,6 +77,7 @@ export default function ImageUpload({ onUpload, accept = "image/*", maxSize = 5 
         variant="outline"
         onClick={() => fileInputRef.current?.click()}
         disabled={isUploading}
+        title={!process.env.NEXT_PUBLIC_BLOB_CONFIGURED ? "暂未配置图片上传" : undefined}
       >
         {isUploading ? "上传中..." : "上传图片"}
       </Button>

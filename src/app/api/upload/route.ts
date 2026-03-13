@@ -10,6 +10,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "未授权" }, { status: 401 });
   }
 
+  // 检查是否配置了 Vercel Blob
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return NextResponse.json(
+      {
+        error: "未配置 Vercel Blob 存储",
+        message: "请在 Vercel Dashboard 中创建 Blob 存储或设置 BLOB_READ_WRITE_TOKEN 环境变量",
+        hint: "也可以直接使用外部图片 URL"
+      },
+      { status: 501 }
+    );
+  }
+
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File;
