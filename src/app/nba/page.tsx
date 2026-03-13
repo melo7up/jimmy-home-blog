@@ -65,27 +65,39 @@ export default async function NBAPage() {
         </a>
       </section>
 
-      {/* 球队颜色展示 */}
+      {/* 赛季球衣展示 */}
       <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">🎨 球队配色</h2>
-        <div className="flex gap-4">
-          <div
-            className="flex-1 h-24 rounded-lg flex items-center justify-center text-white font-medium"
-            style={{ backgroundColor: MAVERICKS_INFO.colors.navy }}
-          >
-            海军蓝 #002B5E
+        <h2 className="text-2xl font-bold mb-4">👕 赛季球衣</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {/* 主场球衣 */}
+          <div className="rounded-lg border-2 overflow-hidden">
+            <div className="h-32 bg-white flex items-center justify-center border-b-2 border-[#002B5E]">
+              <span className="text-4xl font-bold text-[#002B5E]">Mavericks</span>
+            </div>
+            <div className="p-4 text-center">
+              <h3 className="font-semibold text-lg">主场球衣</h3>
+              <p className="text-sm text-muted-foreground">经典白色主场</p>
+            </div>
           </div>
-          <div
-            className="flex-1 h-24 rounded-lg flex items-center justify-center text-white font-medium"
-            style={{ backgroundColor: MAVERICKS_INFO.colors.royal }}
-          >
-            皇家蓝 #0053BC
+          {/* 客场球衣 */}
+          <div className="rounded-lg border-2 overflow-hidden">
+            <div className="h-32 bg-[#002B5E] flex items-center justify-center border-b-2 border-[#B8C4CA]">
+              <span className="text-4xl font-bold text-white">Dallas</span>
+            </div>
+            <div className="p-4 text-center">
+              <h3 className="font-semibold text-lg">客场球衣</h3>
+              <p className="text-sm text-muted-foreground">海军蓝客场</p>
+            </div>
           </div>
-          <div
-            className="flex-1 h-24 rounded-lg flex items-center justify-center text-gray-800 font-medium"
-            style={{ backgroundColor: MAVERICKS_INFO.colors.silver }}
-          >
-            银灰色 #B8C4CA
+          {/* 经典版球衣 */}
+          <div className="rounded-lg border-2 overflow-hidden">
+            <div className="h-32 bg-[#0053BC] flex items-center justify-center border-b-2 border-white">
+              <span className="text-4xl font-bold text-white">Mavs</span>
+            </div>
+            <div className="p-4 text-center">
+              <h3 className="font-semibold text-lg">经典版球衣</h3>
+              <p className="text-sm text-muted-foreground">皇家蓝经典</p>
+            </div>
           </div>
         </div>
       </section>

@@ -44,8 +44,8 @@ export default async function Home() {
               </Button>
             </Link>
             <Link href="/nba">
-              <Button size="lg" variant="outline" className="border-[var(--color-mavericks-silver)] text-[var(--color-mavericks-silver)] hover:bg-[var(--color-mavericks-silver)]/10">
-                NBA 专区
+              <Button size="lg" className="bg-gradient-to-r from-[#002B5E] to-[#0053BC] text-white border-white hover:from-[#0053BC] hover:to-[#002B5E] font-semibold">
+                🏀 NBA 专区
               </Button>
             </Link>
           </div>
@@ -112,19 +112,21 @@ export default async function Home() {
       </section>
 
       {/* NBA Section CTA */}
-      <section className="bg-[var(--color-mavericks-royal)]/5 py-12">
+      <section className="bg-gradient-to-r from-[#002B5E] via-[#0053BC] to-[#B8C4CA] py-12">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">
             🏀 NBA 专区
           </h2>
-          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
             获取达拉斯独行侠队最新赛程、比分和资讯
           </p>
-          <Link href="/nba">
-            <Button size="lg" className="bg-[var(--color-mavericks-navy)] hover:bg-[var(--color-mavericks-navy)]/90">
-              进入 NBA 专区
-            </Button>
-          </Link>
+          <div className="flex justify-center gap-4">
+            <Link href="/nba">
+              <Button size="lg" className="bg-white text-[#002B5E] hover:bg-white/90 font-semibold">
+                🏀 进入 NBA 专区
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
