@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = "force-dynamic";
+
 // GET - 获取所有文章
 export async function GET() {
   const session = await auth();

@@ -183,9 +183,9 @@ export default function EditorPage({ params }: { params: Promise<{ id?: string }
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" asChild>
-            <Link href="/admin">取消</Link>
-          </Button>
+          <Link href="/admin">
+            <Button variant="outline">取消</Button>
+          </Link>
           <Button onClick={handleSubmit} disabled={isLoading}>
             {isLoading ? "保存中..." : "保存"}
           </Button>

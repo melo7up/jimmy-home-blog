@@ -58,9 +58,9 @@ export default function Header() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button asChild variant="ghost">
-            <Link href="/admin">管理后台</Link>
-          </Button>
+          <Link href="/admin">
+            <Button variant="ghost">管理后台</Button>
+          </Link>
           <Button
             variant="ghost"
             size="icon"

@@ -38,12 +38,16 @@ export default async function Home() {
             NBA 独行侠主题个人博客 - 记录生活和分享心得体会
           </p>
           <div className="flex justify-center gap-4">
-            <Button asChild size="lg" className="bg-[var(--color-mavericks-royal)] hover:bg-[var(--color-mavericks-royal)]/90">
-              <Link href="/blog">浏览文章</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-[var(--color-mavericks-silver)] text-[var(--color-mavericks-silver)] hover:bg-[var(--color-mavericks-silver)]/10">
-              <Link href="/nba">NBA 专区</Link>
-            </Button>
+            <Link href="/blog">
+              <Button size="lg" className="bg-[var(--color-mavericks-royal)] hover:bg-[var(--color-mavericks-royal)]/90">
+                浏览文章
+              </Button>
+            </Link>
+            <Link href="/nba">
+              <Button size="lg" variant="outline" className="border-[var(--color-mavericks-silver)] text-[var(--color-mavericks-silver)] hover:bg-[var(--color-mavericks-silver)]/10">
+                NBA 专区
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -52,9 +56,9 @@ export default async function Home() {
       <section className="container mx-auto px-4 py-12">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-bold tracking-tight">最新文章</h2>
-          <Button asChild variant="ghost">
-            <Link href="/blog">查看全部 →</Link>
-          </Button>
+          <Link href="/blog">
+            <Button variant="ghost">查看全部 →</Button>
+          </Link>
         </div>
 
         {posts.length === 0 ? (
@@ -116,9 +120,11 @@ export default async function Home() {
           <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
             获取达拉斯独行侠队最新赛程、比分和资讯
           </p>
-          <Button asChild size="lg" className="bg-[var(--color-mavericks-navy)] hover:bg-[var(--color-mavericks-navy)]/90">
-            <Link href="/nba">进入 NBA 专区</Link>
-          </Button>
+          <Link href="/nba">
+            <Button size="lg" className="bg-[var(--color-mavericks-navy)] hover:bg-[var(--color-mavericks-navy)]/90">
+              进入 NBA 专区
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

@@ -2,6 +2,8 @@ import { put } from "@vercel/blob";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   const session = await auth();
   if (!session) {
@@ -42,7 +44,6 @@ export async function POST(request: NextRequest) {
       url: blob.url,
       pathname: blob.pathname,
       contentType: blob.contentType,
-      size: blob.size,
     });
   } catch (error) {
     console.error("上传失败:", error);

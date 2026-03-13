@@ -1,7 +1,8 @@
-import NextAuth, { type DefaultSession } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import NextAuth, { DefaultSession, NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
+import { getServerSession } from "next-auth/next";
 
 declare module "next-auth" {
   interface Session {
@@ -11,14 +12,9 @@ declare module "next-auth" {
   }
 }
 
-export const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
-} = NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
-    Credentials({
+    CredentialsProvider({
       name: "credentials",
       credentials: {
         email: { label: "Email", type: "email" },
@@ -74,4 +70,9 @@ export const {
       return session;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };
+export const auth = () => getServerSession(authOptions);

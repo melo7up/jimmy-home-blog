@@ -34,9 +34,9 @@ export default async function AdminPage() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button asChild>
-            <Link href="/admin/editor">新建文章</Link>
-          </Button>
+          <Link href="/admin/editor">
+            <Button>新建文章</Button>
+          </Link>
           <form action="/api/auth/signout" method="POST">
             <Button type="submit" variant="outline">退出登录</Button>
           </form>
@@ -100,14 +100,12 @@ export default async function AdminPage() {
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex gap-2">
-                        <Button variant="ghost" size="sm" asChild>
-                          <Link href={`/admin/editor/${post.id}`}>编辑</Link>
-                        </Button>
-                        <Button variant="ghost" size="sm" asChild>
-                          <Link href={`/blog/${post.slug}`} target="_blank">
-                            查看
-                          </Link>
-                        </Button>
+                        <Link href={`/admin/editor/${post.id}`}>
+                          <Button variant="ghost" size="sm">编辑</Button>
+                        </Link>
+                        <Link href={`/blog/${post.slug}`} target="_blank">
+                          <Button variant="ghost" size="sm">查看</Button>
+                        </Link>
                       </div>
                     </td>
                   </tr>
