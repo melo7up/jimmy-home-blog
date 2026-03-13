@@ -4,6 +4,5 @@
   "installCommand": "npm install",
   "buildCommand": "prisma generate && prisma migrate deploy && npm run build",
   "outputDirectory": ".next",
-  "regions": ["hnd1"],
-  "postDeploy": "npm run create-admin || true"
+  "regions": ["hnd1"]
 }
