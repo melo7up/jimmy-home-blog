@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 // NBA 球队信息 - 独行侠
 const MAVERICKS_INFO = {
   name: "达拉斯独行侠",
- 英文名："Dallas Mavericks",
+  englishName: "Dallas Mavericks",
   abbreviations: "DAL",
   conference: "西部",
   division: "西南赛区",
@@ -23,7 +23,7 @@ export default async function NBAPage() {
       <section className="mb-8 rounded-lg overflow-hidden" style={{ backgroundColor: MAVERICKS_INFO.colors.navy }}>
         <div className="p-8 text-white text-center">
           <h1 className="text-4xl font-bold mb-2">🏀 {MAVERICKS_INFO.name}</h1>
-          <p className="text-lg opacity-90">{MAVERICKS_INFO.英文名}</p>
+          <p className="text-lg opacity-90">{MAVERICKS_INFO.englishName}</p>
           <div className="mt-4 flex justify-center gap-4 text-sm opacity-75">
             <span>{MAVERICKS_INFO.conference} | {MAVERICKS_INFO.division}</span>
             <span>•</span>
